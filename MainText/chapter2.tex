@@ -1,0 +1,74 @@
+\chapter{How to use the template} \label{ch-2}
+
+This is a practical guide into how to use this template, by explaining the role of the different folders and files.
+
+If some practices seem like overkill for a 20 page proposal (splitting the content across different files), that is because it probably is, but we built it this way because this thesis template is structured identically. That means that you will be able to incorporate this document into your thesis seamlessly.
+
+\section{Folders}
+
+The main folder contains three folders detailed here:
+
+\begin{itemize}
+
+    \item \textbf{Assets.} This folder should contain all the images that you will use in your thesis. It can contain subfolders, for example one for each chapter. To include an image from the main text, use something like \texttt{\textbackslash includegraphics\{subfolder/image.jpg\} } without worrying about the \texttt{Images} path.
+
+    \item \textbf{MainText.} This folder contains a series of \LaTeX\ files that form the main text: introduction, chapters, conclusion, appendices and published articles. The introduction and conclusion as they are now are not numbered, which creates a few difficulties with the headers of the thesis. Those are solved by including the commands \texttt{\textbackslash unnumberedchapter\{\}} and \texttt{\textbackslash numberedchapter} before including the files in \texttt{xxx\_Thesis.tex}. If you want the introduction and conclusion to be numbered, re-write and treat them as regular chapters.
+    
+    \item \textbf{Preamble.} This folder contains a series of \LaTeX\ files with the pages that will appear before the main text. Please write (or copy and paste) your own text in those files and delete the dummy text when appropriate. The files are:
+    \begin{itemize}
+    \item \texttt{abbreviations.tex} --- List of abbreviations. If the list goes over one page, create another table.
+    \item \texttt{abstract.tex} --- Abstract. Follow directions in the file.
+    \item \texttt{certificate.tex} --- Acknowledgments. Follow directions in the file.
+    \item \texttt{declaration.tex} --- Declaration of Original and Sole Authorship. Only modify the last item. This page needs to be signed once printed.
+    \item \texttt{glossary.tex} --- Glossary (optional). If the list goes over one page, create another table.
+    \item \texttt{physics\_bibstyle.bst} --- Bibliography style file modified by Jeremie Gillet in 2011 to suit his thesis. Might be suitable for physics. If you want to use another custom bibliography style, include the file in this folder.
+    \item \texttt{Thesis\_bibliography.bib} --- BibTeX file containing your bibliography.
+    \item \texttt{report\_bib.bib} --- BibTeX file containing your bibliography for reports.
+    \end{itemize}
+    
+    \end{itemize}
+
+\section{\texttt{Dissertation.tex}}
+
+This is the main files, the only one that need to be compiled to build the document. Compile once with \LaTeX, once with BibTeX and finally twice with \LaTeX\ to get all the references right.
+
+Let's go through each section and comment them briefly. \cite{App88} The last section will emphasize the differences between the two files.\cite{C_grammar}
+
+\subsection{PACKAGES AND OTHER DOCUMENT CONFIGURATIONS}
+
+This section contains the minimum number of packages and definitions to compile the thesis. No line should be removed or modified.
+
+\subsection{ADD YOUR CUSTOM VALUES, COMMANDS AND PACKAGES}
+
+This section should not be modified directly. Instead, your packages and definitions should be included in  \texttt{Preamble/mydefinitions.tex}.
+
+\subsection{TITLE PAGE}
+
+Creates the title page.
+
+\subsection{PREAMBLE PAGES}
+
+Structures the style (header) for the preamble pages and builds them. Do not modify.
+
+\subsection{LIST OF CONTENTS/FIGURES/TABLES}
+
+Creates the list of contents. Do not modify.
+
+\subsection{THESIS MAIN TEXT}
+
+Structures the style for the main text chapters and builds them. 
+
+\subsection{BIBLIOGRAPHY}
+
+Builds the bibliography. The style of the bibliography can be defined in \texttt{Preamble/mydefinitions.tex}.
+
+\subsection{APPENDICES}
+
+Structures the style for the appendices and builds them. The appendices are numbered with letters but are structured like regular chapters.
+
+\subsection{Differences between a report version and final version}
+
+There are two main differences between \verb|\documentclass[report]{dd_dissertation}| and \verb|\documentclass[final]{dd_dissertation}|. 
+
+The difference is in the document style: page size, header and line spacing are different This might create small issues, such as page breaking with large tables, images or captions, when compiling the same content.
+
