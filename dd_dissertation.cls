@@ -43,6 +43,8 @@
 		\fancyhead[LO]{}
 	}%Headers for right pages
 
+	
+
 	\newcommand{\startpreamble}{
 		\pagestyle{fancy} % Changes the headers
 		\fancyhf{}% Clears header and footer
@@ -57,11 +59,11 @@
 \else
 	\LoadClass[12pt, oneside]{book} % 12 pt font, one-sided book style
 	
-	\RequirePackage[a4paper, includehead, headheight=0.2cm, inner=2cm ,outer=2cm, top=2 cm, bottom=2cm]{geometry}
+	\RequirePackage[a4paper, includehead, headheight=0.2cm, inner=2cm ,outer=2cm, top=2cm, bottom=2cm]{geometry}
 	
 	\RequirePackage[bf, font=onehalfspacing]{caption} % caption: FIG in bold, 1.5 line spacing in figure and table captions
 
-	\newcommand{\thesisspacing}{\doublespacing}
+	\newcommand{\thesisspacing}{\singlespacing}
 
 	\newcommand{\numberedchapter}{ % Preparation for numbered chapters
 		\cleardoublepage % To make sure the previous headers are passed
@@ -73,7 +75,18 @@
 		\phantomsection % To help hyperref link to the right page
 		\addcontentsline{toc}{chapter}{#1} % Also adds the chapter name to the Contents
 		\lhead{\bfseries #1} % Header
+		\titlespacing*{\chapter}{0pt}{*4}{0}
 	}
+	\newcommand\subsubsubsection{\@startsection{subsubsection}{4}{\z@}%
+                {-3.25ex\@plus -1ex \@minus -.2ex}%
+                {1.5ex \@plus .2ex}%
+                {\normalfont\normalsize\bfseries}}
+	\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+                {-3.25ex\@plus -1ex \@minus -.2ex}%
+                {1.5ex \@plus .2ex}%
+                {\normalfont\normalsize\bfseries}}
+	\setcounter{secnumdepth}{4}
+	\setcounter{tocdepth}{4}
 
 	\newcommand{\startpreamble}{
 		% \pagestyle{fancy} % Change the header style
@@ -129,7 +142,7 @@
            { \huge \bfseries \thesistitle \par \ }
          \vspace{1.5cm}
      
-            \textit{A seminar report submitted in partial fulfilment of the requirements for the degree of}
+            \textit{A project report submitted in partial fulfilment of the requirements for the degree of}
                  
             \vspace{0.2cm}
      
@@ -168,7 +181,7 @@
             
             
      
-           \vspace{3cm}
+           \vspace{2cm}
            \textbf{\large DEPARTMENT OF COMPUTER SCIENCE}\\
             \textbf{\large GAUHATI UNIVERSITY, ASSAM}\\
            \textbf{\large \submissionmonth}

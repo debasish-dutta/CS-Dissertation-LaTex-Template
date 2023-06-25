@@ -20,7 +20,7 @@
 \usepackage[english]{babel} % The document is in English
 \usepackage[utf8]{inputenc} % UTF8 encoding
 \usepackage[T1]{fontenc} % Font encoding
-
+\usepackage{lmodern}
 \usepackage{graphicx} % For including images
 \graphicspath{{./Assets/}} % Specifies the directory where pictures are stored
 
@@ -31,6 +31,7 @@
 \usepackage{listings} % For writing code
 
 \usepackage{array, booktabs}
+\usepackage{titlesec}
 
 \usepackage[x11names,table]{xcolor} % For timeline
 \usepackage{caption} % For captions
@@ -49,7 +50,7 @@
 % \usepackage{apacite}
 
 % \bibliographystyle{Preamble/myapa} % You may use a different style adapted to your field
-\bibliographystyle{unsrtnat} % You may use a different style adapted to your field
+\bibliographystyle{abbrvnat} % You may use a different style adapted to your field
 
 
 %----------------------------------------------------------------------------------------
@@ -57,6 +58,8 @@
 %----------------------------------------------------------------------------------------
 
 \usepackage{amsthm,amsmath,amssymb,amsfonts,bbm}% Math symbols
+\usepackage{multirow}
+\usepackage{tabularx}
 
 %----------------------------------------------------------------------------------------
 %	YOUR DEFINITIONS AND COMMANDS
@@ -91,14 +94,15 @@
 % and include your own custom LaTeX functions and packages
 
 \input{Preamble/mydefinitions}
-
+% \usepackage[none]{hyphenat}
+\usepackage{float}
 
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
 \begin{document}
-\pagestyle{empty} % No page numbers
+\pagestyle{plain} % No page numbers
 \frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the preamble pages
 
 \puttitle{
@@ -109,6 +113,7 @@
 	supervisordesignation=Supervisor Designation, % Supervisor designation  name
 	submissionmonth={May 2023}  % Submission date "Month, year"
 }
+
 
 %----------------------------------------------------------------------------------------
 %	PREAMBLE PAGES (comment out unnecessary pages)
@@ -122,11 +127,16 @@
 % \fancyhf{}% Clears header and footer
 % \fancyhead[RO,LE]{\thepage} % page number on the outside of headers
 
+\begin{doublespacing}
 \input{Preamble/certificate}
+\input{Preamble/certificate_sup}
+\input{Preamble/certificate_ext}
 \input{Preamble/declaration}
+\input{Preamble/acknoledgement}
+\end{doublespacing}
 \input{Preamble/abstract}
-\input{Preamble/abbreviations}
-\input{Preamble/glossary}
+% \input{Preamble/abbreviations}
+% \input{Preamble/glossary}
 
 %----------------------------------------------------------------------------------------
 %	LIST OF CONTENTS/FIGURES/TABLES
@@ -154,7 +164,11 @@
 \input{MainText/chapter2} 
 \input{MainText/chapter3} 
 \input{MainText/chapter4} 
-%\input{MainText/chapter5} 
+% \input{MainText/chapter5} 
+% \input{MainText/chapter6} 
+% \input{MainText/chapter7} 
+% \input{MainText/chapter8} 
+% \input{MainText/chapter9} 
 
 \pagebreak
 %----------------------------------------------------------------------------------------
@@ -176,6 +190,6 @@
 \numberedchapter
 \input{MainText/appendixA}
 \input{MainText/appendixB}
-%\input{MainText/appendixC}
+% \input{MainText/appendixC}
 
 \end{document}  
