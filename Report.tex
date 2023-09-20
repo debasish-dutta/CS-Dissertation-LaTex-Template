@@ -1,9 +1,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% GU|CS Seminar/Project Thesis - Final bound version
+% GU|CS Seminar/Project Thesis - Report version
 % LaTeX Template
-% Version 6.3 (2023/05/30)
+% Version 6.9 (2023/05/30)
 %
-% This version is the final binding version which will be published.
+% This version is the report version to keep track during the seminar progress.
 %
 % Original author:
 % Debasish Dutta
@@ -14,7 +14,8 @@
 %	PACKAGES AND DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\documentclass[final]{dd_dissertation} % Final version for submission;
+\documentclass[report]{dd_dissertation} % Report version of the dissertation;
+%\documentclass[final]{dd_dissertation} % Final version for submission;
 
 \usepackage{dd_dissertation_pck}
 
@@ -24,17 +25,17 @@
 
 \begin{document}
 \pagestyle{plain} % No page numbers
-\frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the preamble pages
+% \frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the preamble pages
 
 \puttitle{
-	title=\LaTeX\ Thesis Template, % Title of the thesis
-	degree=COMPUTER SCIENCE,
+	title=\LaTeX\ Seminar Report Title, % Title of the thesis
+	degree=COMPUTER SCIENCE, % Degree Name
 	name=Author Name, % Author name
 	authordesignation=PS-XxX-xXx-XXXX, % Author designation
 	supervisor=S.~Upervisor, % Supervisor name
 	supervisordesignation=Supervisor Designation, % Supervisor designation  name
-	submissionmonth={May 2023},
-	submissiondate=20 May  % Submission date "Month, year"
+	submissionmonth={May 2023},  % Submission date "Month, year"
+	submissiondate={20 May 2023}  % Submission date "Month, year"
 }
 
 
@@ -44,43 +45,56 @@
 
 \startpreamble
 
-\includeCertificate
-\includeSupplementaryCertificate
-\includeExternalCertificate
-\includeDeclaration
-\includeAcknowledgement
-\includeAbstract
-\includeAbbreviations
-\includeGlossary
+% \pagestyle{fancy} % Changes the headers
+% \renewcommand{\chaptermark}[1]{ \markboth{#1}{}} % Getting the chapter name right
+% \renewcommand{\sectionmark}[1]{\markright{\thesection\; #1}} % Getting the section name right
+% \fancyhf{}% Clears header and footer
+% \fancyhead[RO,LE]{\thepage} % page number on the outside of headers
 
+% \begin{doublespacing}
+% \input{Preamble/certificate}
+% \input{Preamble/certificate_sup}
+% \input{Preamble/certificate_ext}
+% \input{Preamble/declaration}
+% \input{Preamble/acknoledgement}
+% \end{doublespacing}
+% \input{Preamble/abstract}
+% \input{Preamble/abbreviations}
+% \input{Preamble/glossary}
 
 %----------------------------------------------------------------------------------------
 %	LIST OF CONTENTS/FIGURES/TABLES
 %----------------------------------------------------------------------------------------
 
-\unnumberedchapter{Contents}
-\tableofcontents % Write out the Table of Contents
-\unnumberedchapter{List of Figures}
-\listoffigures % Write out the List of Figures
-\unnumberedchapter{List of Tables}
-\listoftables % Write out the List of Tables
-\unnumberedchapter{List of Listings}
+% \unnumberedchapter{Contents}
+% \tableofcontents % Write out the Table of Contents
+% \unnumberedchapter{List of Figures}
+% \listoffigures % Write out the List of Figures
+% \unnumberedchapter{List of Tables}
+% \listoftables % Write out the List of Tables
+% \unnumberedchapter{List of Listings}
 % \addcontentsline{toc}{section}{List of Listings}
-\lstlistoflistings
-
+% \lstlistoflistings
+% \newpage
 %----------------------------------------------------------------------------------------
 %	THESIS MAIN TEXT - CHAPTERS
 %----------------------------------------------------------------------------------------
 
-\addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
-\mainmatter % Begin numeric (1,2,3...) page numbering
+% \addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
+% \mainmatter % Begin numeric (1,2,3...) page numbering
 % \doublespacing % Double spacing
 
-\numberedchapter
-\input{MainText/chapter1} % Import your chapters here
-\input{MainText/chapter2} 
-\input{MainText/chapter3} 
-\input{MainText/chapter4} 
+\begin{abstract}
+	This seminar report serves as a guide to using LaTeX, a powerful typesetting system. It provides explanations and examples for various LaTeX components.
+\end{abstract}
+	
+
+% \numberedchapter
+\input{MainText/synopsis} % Import your chapters here
+% \input{MainText/chapter1} 
+% \input{MainText/chapter2} 
+% \input{MainText/chapter3} 
+% \input{MainText/chapter4} 
 % \input{MainText/chapter5} 
 % \input{MainText/chapter6} 
 % \input{MainText/chapter7} 
@@ -92,8 +106,8 @@
 %	BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
 
-\addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
-\unnumberedchapter{Bibliography} % Title of the unnumbered chapter
+% \addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
+% \unnumberedchapter{Bibliography} % Title of the unnumbered chapter
 % \bibliography{./Preamble/Thesis_bibliography} % The references information are stored in the file named "Thesis_bibliography.bib"
 \bibliography{Preamble/report_bib} % The references information are stored in the file named "report_bib.bib"
 
@@ -101,12 +115,12 @@
 %	APPENDICES
 %----------------------------------------------------------------------------------------
 
-\addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
-\appendix % Starts of appendices
+% \addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
+% \appendix % Starts of appendices
 
-\numberedchapter
-\input{MainText/appendixA}
-\input{MainText/appendixB}
+% \numberedchapter
+% \input{MainText/appendixA}
+% \input{MainText/appendixB}
 % \input{MainText/appendixC}
 
 \end{document}  

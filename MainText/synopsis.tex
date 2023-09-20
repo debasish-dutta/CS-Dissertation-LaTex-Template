@@ -1,0 +1,177 @@
+\section{Introduction on how to use this template}
+LaTeX is a typesetting system commonly used for producing high-quality documents, including research papers, reports, and presentations. It offers several advantages over traditional word processors. In this seminar, we'll explore some essential LaTeX components.
+
+This is a practical guide into how to use this template, by explaining the role of the different folders and files.
+
+If some practices seem like overkill for a 20 page proposal (splitting the content across different files), that is because it probably is, but we built it this way because this thesis template is structured identically. That means that you will be able to incorporate this document into your thesis seamlessly.
+
+\section{Template Structure}
+
+
+\subsection{Folder Setup}
+The main folder contains three folders detailed here:
+\begin{itemize}
+
+    \item \textbf{Assets.} This folder should contain all the images that you will use in your thesis. It can contain subfolders, for example one for each chapter. To include an image from the main text, use something like \texttt{\textbackslash includegraphics\{subfolder/image.jpg\} } without worrying about the \texttt{Images} path.
+
+    \item \textbf{MainText.} This folder contains a series of \LaTeX\ files that form the main text: introduction, chapters, conclusion, appendices and published articles. The introduction and conclusion as they are now are not numbered, which creates a few difficulties with the headers of the thesis. Those are solved by including the commands \texttt{\textbackslash unnumberedchapter\{\}} and \texttt{\textbackslash numberedchapter} before including the files in \texttt{xxx\_Thesis.tex}. If you want the introduction and conclusion to be numbered, re-write and treat them as regular chapters.
+    
+    \item \textbf{Preamble.} This folder contains a series of \LaTeX\ files with the pages that will appear before the main text. These files are mainly for the final dissertation. Do not modify them for unless neccessary. The files are:
+    \begin{itemize}
+    \item \texttt{abstract.tex} --- Abstract. Follow directions in the file.
+    \item \texttt{certificate\_ext.tex} --- Acknowledgments. Follow directions in the file.
+    \item \texttt{certificate\_hod.tex} --- Acknowledgments. Follow directions in the file.
+    \item \texttt{certificate.tex} --- Acknowledgments. Follow directions in the file.
+    \item \texttt{declaration.tex} --- Declaration of Original and Sole Authorship. Only modify the last item. This page needs to be signed once printed.
+    \item \texttt{glossary.tex} --- Glossary (optional). If the list goes over one page, create another table.
+    \item \texttt{apa.bst} --- Bibliography style file modified to suit this thesis. If you want to use another custom bibliography style, include the file in this folder.
+    \item \texttt{Thesis\_bibliography.bib} --- BibTeX file containing your bibliography.
+    \item \texttt{report\_bib.bib} --- BibTeX file containing your bibliography for reports.
+    \end{itemize}
+    
+    \end{itemize}
+
+\subsection{\texttt{Report.tex}}
+
+    This is the main file, the only one that need to be compiled to build the document. Compile once with \LaTeX, once with BibTeX and finally twice with \LaTeX\ to get all the references right.
+    
+    Let's go through each section and comment them briefly. \cite{App88} The last section will emphasize the differences between the two files.\cite{C_grammar}
+    
+
+\subsection{Differences between a report version and final version}
+
+    There are two main differences between \verb|\documentclass[report]{dd_dissertation}| and \verb|\documentclass[final]{dd_dissertation}|. 
+    
+    The difference is in the document style: page size, header and line spacing are different This might create small issues, such as page breaking with large tables, images or captions, when compiling the same content.
+    
+
+\section{Document Structure}
+\subsection{Title, Author, and Date}
+To set the title, author, and date, change the \texttt{title}, \texttt{author}, and \texttt{date} commands:
+\begin{verbatim}
+title=Seminar Report: A Guide to LaTeX,
+name=Author Name,
+authordesignation=PS-XxX-xXx-XXXX,
+supervisor=Supervisor name, 
+supervisordesignation=Supervisor Designation, 
+submissionmonth={May 2023}  
+
+
+\end{verbatim}
+\section{Text Formatting}
+\subsection{Sections and Subsections}
+Divide your document into sections and subsections using the \texttt{section} and \texttt{subsection} commands:
+\begin{verbatim}
+\section{Introduction}
+\subsection{Document Class}
+\end{verbatim}
+\subsection{Emphasis}
+Use \texttt{emphasized text} for emphasizing text and \textbf{bold text} for making text bold.
+
+\section{Lists, Figures, Tables and Codes}
+\subsection{Lists}
+\subsubsection{Unordered Lists}
+Create bullet-point lists using the \texttt{itemize} environment:
+\begin{itemize}
+  \item Item 1
+  \item Item 2
+\end{itemize}
+
+\subsubsection{Ordered Lists}
+Create numbered lists using the \texttt{enumerate} environment:
+\begin{enumerate}
+  \item First item
+  \item Second item
+\end{enumerate}
+
+\subsection{Figures}
+Insert figures using the \texttt{figure} environment:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.25\textwidth]{chap3/dragon.png} 
+  \caption{A sample figure.}
+  \label{fig:sample}
+\end{figure}
+
+Refer to figure like this: Figure~\ref{fig:sample} or this (Fig.~\ref{fig:sample}). 
+
+
+\subsection{Tables}
+\begin{table}[H] 
+    \center
+    \caption{Short heading above the table.}
+    \begin{tabular}{c|c}
+    Parameter & Value \\ \hline \hline
+    $\Delta$ & 0, 150 \\
+    ${\alpha}$ & 85 \\
+    ${\epsilon}$ & 6 \\
+    ${\kappa}$ & 6.8 \\
+    ${\gamma}$ & 0.2
+    \end{tabular}
+    \label{tab:values}
+    \caption*{Full caption with all the details here.}
+    \end{table}
+    
+    \begin{table}[H] \center
+    \begin{tabular}{c|c}
+    Parameter & Value \\ \hline \hline
+    $\Delta$ & 0, 1500 \\
+    ${\alpha}$ & 850 \\
+    ${\epsilon}$ & 60 \\
+    ${\kappa}$ & 68 \\
+    ${\gamma}$ & 2
+    \end{tabular}
+    \caption{This is how tables are created}
+    \end{table}
+    
+    
+    Refer to tables this this: Table~\ref{tab:values}.
+
+    \subsection{Codes}
+
+    \begin{lstlisting}[caption={My Captions},captionpos=b]
+        x := -2 + y
+        
+        \end{lstlisting}
+       
+    \begin{lstlisting}[language=C,caption={[short caption]caption text}, captionpos=b]
+                     int main() {
+                         //compound statement #1 
+                         int a = 1;
+                         {       
+                             //compound statement #2
+                             a = 2;
+                                 if (a) {
+                                     //compound statement #3
+                                     a = 4;
+                             }
+                         }
+                     }
+            
+            \end{lstlisting}
+    
+    \pagebreak
+    For indented code insertation we can do it like this.
+    \begin{verbatim}
+        // Hello.java
+        import javax.swing.JApplet;
+        import java.awt.Graphics;
+    
+        public class Hello extends JApplet {
+            public void paintComponent(Graphics g) {
+                g.drawString("Hello, world!", 65, 95);
+            }    
+        }
+    
+        \end{verbatim}
+
+
+\section{References}
+Cite references using the \texttt{cite} command:
+\begin{verbatim}
+According to \cite{author2022}, LaTeX is powerful.
+\end{verbatim}
+
+\section{Conclusion}
+This seminar report provides a brief introduction to LaTeX and some of its essential components. Experiment with LaTeX to create beautiful documents.
+
