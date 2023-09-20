@@ -1,10 +1,10 @@
 
-% A LaTeX2e class for thesis submissions to
+% A LaTeX2e class for thesis and seminar progress submissions to
 % Dept of Computer Science, Gauhati University
 %
 % Debasish Dutta (ddmasterdon@gmail.com)
 %
-% last revision: March 2023
+% last revision: Sept 2023
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{dd_dissertation}[2023/5/30 GU CS Dissertation submission class]
