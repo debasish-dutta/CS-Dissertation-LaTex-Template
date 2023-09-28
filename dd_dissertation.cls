@@ -180,7 +180,7 @@
     
             \vspace{2cm}
           
-           \includegraphics[width=0.25\textwidth]{Logo}
+           \includegraphics[width=0.25\textwidth]{Assets\Logo.jpg}
             
             \vspace{2cm}
      
@@ -217,7 +217,7 @@
 		\begin{center}
 			{\large \scshape Department Of Computer Science}\\
 			{\large \scshape Gauhati University}\\[1.4cm]
-			\includegraphics[width=3cm]{Logo}\\[1.5cm]
+			\includegraphics[width=3cm]{Assets\Logo.jpg}\\[1.5cm]
 {\Large Seminar Report}\\[0.5cm]
 \rule{\textwidth}{1.5pt}\\[0cm]
 {\huge \bfseries \thesistitle \par \ }\\[-0.5cm]
