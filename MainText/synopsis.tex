@@ -19,10 +19,7 @@ The main folder contains three folders detailed here:
     \item \textbf{Preamble.} This folder contains a series of \LaTeX\ files with the pages that will appear before the main text. These files are mainly for the final dissertation. Do not modify them for unless neccessary. The files are:
     \begin{itemize}
     \item \texttt{abstract.tex} --- Abstract. Follow directions in the file.
-    \item \texttt{certificate\_ext.tex} --- Acknowledgments. Follow directions in the file.
-    \item \texttt{certificate\_hod.tex} --- Acknowledgments. Follow directions in the file.
-    \item \texttt{certificate.tex} --- Acknowledgments. Follow directions in the file.
-    \item \texttt{declaration.tex} --- Declaration of Original and Sole Authorship. Only modify the last item. This page needs to be signed once printed.
+    \item \texttt{appendix.tex} --- Appendices(optional).
     \item \texttt{glossary.tex} --- Glossary (optional). If the list goes over one page, create another table.
     \item \texttt{apa.bst} --- Bibliography style file modified to suit this thesis. If you want to use another custom bibliography style, include the file in this folder.
     \item \texttt{Thesis\_bibliography.bib} --- BibTeX file containing your bibliography.
@@ -49,13 +46,13 @@ The main folder contains three folders detailed here:
 \subsection{Title, Author, and Date}
 To set the title, author, and date, change the \texttt{title}, \texttt{author}, and \texttt{date} commands:
 \begin{verbatim}
-title=Seminar Report: A Guide to LaTeX,
-name=Author Name,
-authordesignation=PS-XxX-xXx-XXXX,
-supervisor=Supervisor name, 
-supervisordesignation=Supervisor Designation, 
-submissionmonth={May 2023}  
-
+\title{\LaTeX\ Seminar Report Title} % Title of the thesis
+\author{Author Name} % Author Name
+\authordesignation{PS-XxX-xXx-XXXX}% Author designation
+\degree{COMPUTER SCIENCE} % Degree Name
+\date{\today}
+\supervisor{Your Guide's Name}
+\supervisordesignation{Guide's Designation}
 
 \end{verbatim}
 \section{Text Formatting}
@@ -150,7 +147,7 @@ Refer to figure like this: Figure~\ref{fig:sample} or this (Fig.~\ref{fig:sample
             
             \end{lstlisting}
     
-    \pagebreak
+    % \pagebrea
     For indented code insertation we can do it like this.
     \begin{verbatim}
         // Hello.java

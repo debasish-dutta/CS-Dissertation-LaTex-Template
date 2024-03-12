@@ -7,13 +7,35 @@
 % last revision: Sept 2023
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{dd_dissertation}[2023/5/30 GU CS Dissertation submission class]
+\ProvidesClass{dd_dissertation}[2023/9/30 GU CS Dissertation submission class]
+
+%-------------------------------------------------------------------------------
+%	PACKAGES AND CONFIGURATION
+%-------------------------------------------------------------------------------
 
 \newif\if@final\@finaltrue
 \DeclareOption{report}{\@finalfalse}
 \DeclareOption{final}{\@finaltrue}
 
 \ProcessOptions\relax
+
+
+\RequirePackage{textcase}
+\RequirePackage{xkeyval} % Handling keyword options.
+
+%-------------------------------------------------------------------------------
+%	CUSTOM COMMANDS AND MACROS
+%-------------------------------------------------------------------------------
+
+\newcommand{\ToggleCase}[1]{%
+  \NoCaseChange{%
+    \ifthenelse{\equal{\MakeTextUppercase{#1}}{#1}}{% Check if input is uppercase
+      \MakeTextLowercase{#1}% If uppercase, convert to sentence case
+    }{%
+      \MakeTextUppercase{#1}% If not uppercase, convert to uppercase
+    }%
+  }%
+}
 
 %-------------------------------------------------------------------------------
 %	HANDLING THE STYLE OF THE THESIS
@@ -51,14 +73,14 @@
 	\setcounter{secnumdepth}{4}
 	\setcounter{tocdepth}{4}
 
-	\newcommand{\includeCertificate}{\input{Preamble/certificate}}
-	\newcommand{\includeSupplementaryCertificate}{\input{Preamble/certificate_sup}}
-	\newcommand{\includeExternalCertificate}{\input{Preamble/certificate_ext}}
-	\newcommand{\includeDeclaration}{\input{Preamble/declaration}}
-	\newcommand{\includeAcknowledgement}{\input{Preamble/acknowledgement}}
-	\newcommand{\includeAbstract}{\input{Preamble/abstract}}
-	\newcommand{\includeAbbreviations}{\input{Preamble/abbreviations}}
-	\newcommand{\includeGlossary}{\input{Preamble/glossary}}
+	% \newcommand{\includeCertificate}{\input{Preamble/certificate}}
+	% \newcommand{\includeSupplementaryCertificate}{\input{Preamble/certificate_sup}}
+	% \newcommand{\includeExternalCertificate}{\input{Preamble/certificate_ext}}
+	% \newcommand{\includeDeclaration}{\input{Preamble/declaration}}
+	% \newcommand{\includeAcknowledgement}{\input{Preamble/acknowledgement}}
+	% \newcommand{\includeAbstract}{\input{Preamble/abstract}}
+	% \newcommand{\includeAbbreviations}{\input{Preamble/abbreviations}}
+	% \newcommand{\includeGlossary}{\input{Preamble/glossary}}
 
 	\newcommand{\startpreamble}{
 		% \pagestyle{fancy} % Change the header style
@@ -125,8 +147,6 @@
 %-------------------------------------------------------------------------------
 %	BUILDING THE TITLE PAGE
 %-------------------------------------------------------------------------------
-
-\RequirePackage{xkeyval} % Handling keyword options.
 
 \define@key[GUCS]{title}{title}{\def\thesistitle{#1}}
 \define@key[GUCS]{title}{degree}{\def\degree{#1}}
@@ -237,6 +257,238 @@
 }
 
 %-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
 %	BUILDING THE CERTIFICATES PAGE
 %-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
 
+\newcommand{\includeCertificate}{%
+\unnumberedchapter{Certificate} 
+\cleardoublepage
+\thispagestyle{empty}
+
+\begin{center}
+ \textbf{\large DEPARTMENT OF COMPUTER SCIENCE}
+
+  \vspace{0.2cm}
+ \textbf{\LARGE GAUHATI UNIVERSITY}\\
+ {\large GUWAHATI - 781014}\\
+ {\large ASSAM}
+
+ \vspace{1cm}
+
+ \includegraphics[width=0.15\textwidth]{logo}
+
+ \vspace{2cm}
+
+ \textbf{\large CERTIFICATE}
+
+ \vspace{2cm}
+
+\end{center}
+
+This is to certify that the dissertation entitled \textbf{\thesistitle} submitted by \textbf{\name}, for partial fulfilment for the requirement of award of the degree of Master of Science in \textbf{\degree}, Gauhati University is a work carried out by him under my supervision and guidance of \textbf{\supervisor}.
+
+ \vspace{3cm}
+
+\begin{tabular}{p{8cm} c}
+Date:	 \submissiondate & Anjana Kakoti Mahanta \\
+Place: Gauhati University	& Head of the Department \\
+	&	Department of Computer Science \\
+	% &	\supervisordesignation\\
+	&	\\
+\end{tabular}
+}
+
+\newcommand{\includeSupplementaryCertificate}{
+\unnumberedchapter{Certificate} 
+\cleardoublepage
+\thispagestyle{empty}
+
+\begin{center}
+ \textbf{\large DEPARTMENT OF COMPUTER SCIENCE}
+
+  \vspace{0.2cm}
+ \textbf{\LARGE GAUHATI UNIVERSITY}\\
+ {\large GUWAHATI - 781014}\\
+ {\large ASSAM}
+
+ \vspace{1cm}
+
+ \includegraphics[width=0.15\textwidth]{logo}
+
+ \vspace{2cm}
+
+ \textbf{\large CERTIFICATE}
+
+ \vspace{2cm}
+
+\end{center}
+
+This is to certify that the project report entitled \textbf{\thesistitle} submitted by \textbf{\name}, for partial fulfilment for the requirement of award of the degree of Master of Science in \textbf{\degree}, Gauhati University is a work carried out by him under my supervision and guidance.
+
+To the best of my knowledge, the work has not been submitted to any other institute for the award of any other degree or diploma.
+
+ \vspace{3cm}
+
+\begin{tabular}{p{8cm} c}
+Date:	 \submissiondate & \supervisor \\
+Place: Gauhati University	& Supervisor \\
+	&	Department of Computer Science \\
+	% &	\supervisordesignation\\
+	&	\\
+\end{tabular}
+}
+
+
+\newcommand{\includeExternalCertificate}{%
+\unnumberedchapter{Certificate} 
+\cleardoublepage
+\thispagestyle{empty}
+
+\begin{center}
+ \textbf{\large DEPARTMENT OF COMPUTER SCIENCE}
+
+  \vspace{0.2cm}
+ \textbf{\LARGE GAUHATI UNIVERSITY}\\
+ {\large GUWAHATI - 781014}\\
+ {\large ASSAM}
+
+ \vspace{1cm}
+
+ \includegraphics[width=0.15\textwidth]{logo}
+
+ \vspace{2cm}
+
+ \textbf{\large CERTIFICATE}
+
+ \vspace{2cm}
+
+\end{center}
+
+The project report entitled \textbf{\thesistitle} submitted by \textbf{\name}, for partial fulfilment for the requirement of award of the degree of Master of Science in \textbf{\degree}, Gauhati University has been examined.
+
+
+ \vspace{5cm}
+
+\begin{tabular}{p{8cm} c}
+Date:	 \submissiondate & \supervisor \\
+Place: Gauhati University	& Supervisor \\
+	&	Department of Computer Science \\
+	% &	\supervisordesignation\\
+	&	\\
+\end{tabular}
+}
+%-------------------------------------------------------------------------------
+%	BUILDING THE DECLARATION PAGE
+%-------------------------------------------------------------------------------
+\newcommand{\includeDeclaration}{%
+\unnumberedchapter{Declaration}
+\cleardoublepage
+\thispagestyle{empty}
+
+\vspace*{2cm}
+
+\begin{center}
+
+
+  \textbf{\large DECLARATION}
+
+  \vspace{5cm}
+
+\end{center}
+
+I hereby declare that the seminar report entitled \textbf{\thesistitle} has been 
+completed by me and submitted in partial fulfilment for the requirement of award 
+of the degree of \textbf{Master of Science in \degree}, Gauhati University. 
+I also declare that any or all contents incorporated in the report has not been submitted in any form for the award of any other degree of any other institute or university.
+
+\vspace{4cm}
+
+\begin{tabular}{p{42ex} l}
+  Date: \submissiondate  &	\name \\
+  Place: Gauhati University	 &	Roll No.: \authordesignation\\
+&	Programme: Masters in \ToggleCase{Computer Science}\\
+&	Semester: Fourth Semester\\
+
+\end{tabular}
+}
+%-------------------------------------------------------------------------------
+%	BUILDING THE ACKNOLODGEMENT PAGE
+%-------------------------------------------------------------------------------
+\newcommand{\includeAcknowledgement}{%
+\unnumberedchapter{Acknoledgement}
+\cleardoublepage
+\thispagestyle{empty}
+
+\vspace*{2cm}
+
+\begin{center}
+
+
+  \textbf{\large ACKNOWLEDGEMENT}
+
+  \vspace{5cm}
+
+\end{center}
+
+\noindent
+I acknowledge and express my gratitude to my project guide, \textbf{Dr Irani Hazarika}, Assistant
+Professor, Department of Computer Science, Gauhati University, for her unwavering support, encouragement
+and valuable advice throughout this project. Her expertise and guidance helped shape the
+direction of my work. \\
+I also extend my sincere thanks to \textbf{Prof. Anjana Kakoti Mahanta}, Department
+of Computer Science, Gauhati University, for her support in this project. Her insights and inputs
+have been invaluable in enhancing the quality of my work. \\
+I would like to express my gratitude to all the faculty members of the Computer Science Department, Gauhati University, for their support and
+encouragement throughout this project. 
+
+ \vspace{5cm}
+
+\begin{tabular}{p{12cm} p{15cm} l}
+  Date: \submissiondate  &	\name \\
+  % Place: Gauhati University	 &	Roll No.: \authordesignation\\
+	% &	Programme: Computer Science\\
+	% &	Semester: Fourth Semester\\
+
+\end{tabular}
+}
+
+
+
+\newcommand{\includeAbstract}{\input{Preamble/abstract}}
+%-------------------------------------------------------------------------------
+%	BUILDING THE ABBREVIATIONS PAGE
+%-------------------------------------------------------------------------------
+\newcommand{\includeAbbreviations}{
+	\unnumberedchapter{Abbreviations} 
+\chapter*{Abbreviations} 
+
+Contains all abbr. used in the dissertation.
+
+Here is an example.
+
+\begin{longtable}{rl}
+PPT & positive partial transpose\\
+SRPT & Schr\"odinger-Robertson partial transpose
+\end{longtable}
+}
+%-------------------------------------------------------------------------------
+%	BUILDING THE GLOSSARY PAGE
+%-------------------------------------------------------------------------------
+\newcommand{\includeGlossary}{
+	\unnumberedchapter{Glossary} 
+\chapter*{Glossary} 
+
+
+Here is an example:
+
+% Break up this table into several ones if it takes up more than one page
+\begin{center}
+\begin{longtable}{r p{0.58 \textwidth}}
+Dipole Blockade & Phenomenon in which the simultaneous excitation of two atoms is inhibited by their dipolar interaction. \\
+Cavity Induced Transparency & Phenomenon in which a cavity containing two atoms excited with light at a frequency halfway between the atomic frequencies contains the number of photons an empty cavity would contain.  \\ 
+\end{longtable}
+\end{center}
+
+}
