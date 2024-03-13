@@ -18,12 +18,7 @@ The main folder contains three folders detailed here:
     \begin{itemize}
     \item \texttt{abbreviations.tex} --- List of abbreviations. If the list goes over one page, create another table.
     \item \texttt{abstract.tex} --- Abstract. Follow directions in the file.
-    \item \texttt{certificate.tex} --- Acknowledgments. Follow directions in the file.
-    \item \texttt{declaration.tex} --- Declaration of Original and Sole Authorship. Only modify the last item. This page needs to be signed once printed.
-    \item \texttt{glossary.tex} --- Glossary (optional). If the list goes over one page, create another table.
-    \item \texttt{physics\_bibstyle.bst} --- Bibliography style file modified by Jeremie Gillet in 2011 to suit his thesis. Might be suitable for physics. If you want to use another custom bibliography style, include the file in this folder.
-    \item \texttt{Thesis\_bibliography.bib} --- BibTeX file containing your bibliography.
-    \item \texttt{report\_bib.bib} --- BibTeX file containing your bibliography for reports.
+    \item \texttt{*.bib} --- BibTeX files containing your bibliography.
     \end{itemize}
     
     \end{itemize}
@@ -33,14 +28,6 @@ The main folder contains three folders detailed here:
 This is the main files, the only one that need to be compiled to build the document. Compile once with \LaTeX, once with BibTeX and finally twice with \LaTeX\ to get all the references right.
 
 Let's go through each section and comment them briefly. \cite{App88} The last section will emphasize the differences between the two files.\cite{C_grammar}
-
-\subsection{PACKAGES AND OTHER DOCUMENT CONFIGURATIONS}
-
-This section contains the minimum number of packages and definitions to compile the thesis. No line should be removed or modified.
-
-\subsection{ADD YOUR CUSTOM VALUES, COMMANDS AND PACKAGES}
-
-This section should not be modified directly. Instead, your packages and definitions should be included in  \texttt{Preamble/mydefinitions.tex}.
 
 \subsection{TITLE PAGE}
 
@@ -65,10 +52,3 @@ Builds the bibliography. The style of the bibliography can be defined in \texttt
 \subsection{APPENDICES}
 
 Structures the style for the appendices and builds them. The appendices are numbered with letters but are structured like regular chapters.
-
-\subsection{Differences between a report version and final version}
-
-There are two main differences between \verb|\documentclass[report]{dd_dissertation}| and \verb|\documentclass[final]{dd_dissertation}|. 
-
-The difference is in the document style: page size, header and line spacing are different This might create small issues, such as page breaking with large tables, images or captions, when compiling the same content.
-
