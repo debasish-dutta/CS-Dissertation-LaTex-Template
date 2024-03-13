@@ -44,8 +44,8 @@
 \RequirePackage{array, booktabs}
 \RequirePackage{titlesec}
 
-% \RequirePackage[x11names,table]{xcolor} % For timeline
-\RequirePackage{caption} % For captions
+\RequirePackage{xcolor} % For timeline
+% \RequirePackage{caption} % For captions
 \RequirePackage{xstring}
 \RequirePackage{float}
 
@@ -74,6 +74,12 @@
     }%
   }%
 }
+
+\DeclareCaptionFont{blue}{\color{LightSteelBlue3}}
+
+\newcommand\ytl[2]{
+\parbox[b]{8em}{{\color{cyan}\bfseries\sffamily #1}}\makebox[0pt]{$\bullet$}\vrule\quad \parbox[c]{4.5cm}{\vspace{7pt}\color{red!40!black!80}\raggedright\sffamily #2.\\[7pt]}\\[-3pt]}
+
 
 % \newdateformat(\monthyear){\monthname[\THEMONTH] \THEYEAR}
 %-------------------------------------------------------------------------------
@@ -299,7 +305,7 @@
 
 \end{center}
 
-This is to certify that the dissertation entitled \textbf{\@title} submitted by \textbf{\@author}, for partial fulfilment for the requirement of award of the degree of Master of Science in \textbf{\@degree}, Gauhati University is a work carried out by him under my supervision and guidance of \textbf{\@supervisor}.
+This is to certify that the dissertation entitled \textbf{\@title} submitted by \textbf{\@author}, for partial fulfilment for the requirement of award of the degree of Master of Science in \textbf{\@degree}, Gauhati University is a work carried out by him/her under my supervision and guidance of \textbf{\@supervisor}.
 
  \vspace{3cm}
 
@@ -349,6 +355,7 @@ Place: Gauhati University	& Supervisor \\
 	% &	\supervisordesignation\\
 	&	\\
 \end{tabular}
+
 }
 \newcommand{\declarationByExternal}{
 \unnumberedchapter{Certificate} 
@@ -380,13 +387,19 @@ The project report entitled \textbf{\@title} submitted by \textbf{\@author}, for
 
  \vspace{5cm}
 
-\begin{tabular}{p{8cm} c}
-Date:	 \@date & \@supervisor \\
-Place: Gauhati University	& Supervisor \\
-	&	Department of Computer Science \\
-	% &	\supervisordesignation\\
-	&	\\
-\end{tabular}
+% \begin{tabular}{p{8cm} c}
+% Date:	 \@date & \@supervisor \\
+% Place: Gauhati University	& Supervisor \\
+% 	&	Department of Computer Science \\
+% 	% &	\supervisordesignation\\
+% 	&	\\
+% \end{tabular}
+\begin{tabular}{p{10cm} p{10cm}}
+  Internal Examiner & External Examiner \\
+  Date:	  & Date: \\
+  Place: Gauhati University	& Place: Gauhati University \\
+  
+  \end{tabular}
 }
 \newcommand{\declarationByStudent}{
 \unnumberedchapter{Declaration}
@@ -411,7 +424,7 @@ I also declare that any or all contents incorporated in the report has not been 
 
 \vspace{4cm}
 
-\begin{tabular}{p{42ex} l}
+\begin{tabular}{p{40ex} l}
   Date: \@date  &	\@author \\
   Place: Gauhati University	 &	Roll No.: \@authordesignation\\
 &	Programme: Masters in \@degree\\
@@ -419,7 +432,7 @@ I also declare that any or all contents incorporated in the report has not been 
 
 \end{tabular}
 }
-\newcommand{\Acknowledgement}{%
+\newcommand{\acknowledgement}{%
 \unnumberedchapter{Acknoledgement}
 \cleardoublepage
 \thispagestyle{empty}
@@ -454,6 +467,15 @@ encouragement throughout this project.
 	% &	Semester: Fourth Semester\\
 
 \end{tabular}
+}
+\newcommand{\abstract}{
+\unnumberedchapter{Abstract} 
+\cleardoublepage
+\thispagestyle{empty}
+\chapter*{Abstract}
+\@title
+\newline \newline
+\input{Preamble/abstract}
 }
 }
 

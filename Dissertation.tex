@@ -14,28 +14,25 @@
 %	PACKAGES AND DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\documentclass[final]{dd_dissertation} % Final version for submission;
+\documentclass[final]{csreport} % Final version for submission;
 
-\usepackage{dd_dissertation_pck}
-
+\graphicspath{{./Assets/}}
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
+\title{\LaTeX\ Seminar Report Title} % Title of the thesis
+\author{Author Name}% Author Name
+\authordesignation{PS-XxX-xXx-XXXX}% Author designation
+\date{\today}
+\degree{COMPUTER SCIENCE}
+\supervisor{Your Supervisor's Name}% Supervisor Name
+\supervisordesignation{Supervisor Designation}% Supervisor  designation
 
 \begin{document}
 \pagestyle{plain} % No page numbers
 \frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the preamble pages
-
-\puttitle{
-	title=\LaTeX\ Thesis Template, % Title of the thesis
-	degree=COMPUTER SCIENCE,
-	name=Author Name, % Author name
-	authordesignation=PS-XxX-xXx-XXXX, % Author designation
-	supervisor=S.~Upervisor, % Supervisor name
-	supervisordesignation=Supervisor Designation, % Supervisor designation  name
-	submissionmonth={May 2023},
-	submissiondate=20 May  % Submission date "Month, year"
-}
+% \maketitle
+\titlePage
 
 
 %----------------------------------------------------------------------------------------
@@ -44,14 +41,12 @@
 
 \startpreamble
 
-\includeCertificate
-\includeSupplementaryCertificate
-\includeExternalCertificate
-\includeDeclaration
-\includeAcknowledgement
-\includeAbstract
-\includeAbbreviations
-\includeGlossary
+\declaration
+\declarationByExternal
+\declarationByGuide
+\declarationByStudent
+\acknowledgement
+\abstract
 
 
 %----------------------------------------------------------------------------------------
@@ -93,8 +88,8 @@
 
 \addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
 \unnumberedchapter{Bibliography} % Title of the unnumbered chapter
-% \bibliography{./Preamble/Thesis_bibliography} % The references information are stored in the file named "Thesis_bibliography.bib"
-\bibliography{Preamble/report_bib} % The references information are stored in the file named "report_bib.bib"
+\bibliography{./Preamble/Thesis_bibliography} % The references information are stored in the file named "Thesis_bibliography.bib"
+% \bibliography{Preamble/report_bib} % The references information are stored in the file named "report_bib.bib"
 
 %----------------------------------------------------------------------------------------
 %	APPENDICES
@@ -104,8 +99,8 @@
 \appendix % Starts of appendices
 
 \numberedchapter
-\input{MainText/appendixA}
-\input{MainText/appendixB}
+\input{Preamble/appendixA}
+\input{Preamble/appendixB}
 % \input{MainText/appendixC}
 
 \end{document}  
