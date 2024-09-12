@@ -1,0 +1,372 @@
+% Template for Statale presentations with LaTeX beamer.
+%
+% Adapted by Giorgio Marchetti, ciao@gio.im for
+% Statale presentations.
+%
+% Original template by Federico Zenith, federico.zenith@sintef.no.
+% Derived (through several iterations) from Håvard Berland's
+% beamerthementnu class.
+%
+%
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+%
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+%
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+% TODO: remove top-right logo from title page
+
+\ProvidesPackage{beamerthemesintef}[2021/11/02]
+
+\RequirePackage{etoolbox}
+\RequirePackage{tikz}
+\RequirePackage{mathabx}
+% Force 16:9 aspect ratio
+\RequirePackage{geometry}
+\geometry{paperwidth=16cm,paperheight=9cm}
+
+% Caladea is a Cambria clone, Carlito a Calibri clone
+\RequirePackage{caladea,carlito}
+\renewcommand{\familydefault}{\sfdefault}
+
+\RequirePackage{graphicx,sintefcolor}
+
+% No navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+\newcommand{\@footlineauthor}{\insertauthor \enspace$\vert$\enspace}
+\newcommand{\@footlinepayoff}{\@footlineauthor\inserttitle}
+\newcommand{\footlinepayoff}[1]{\renewcommand{\@footlinepayoff}{#1}}
+% Define footline content
+\setbeamertemplate{footline}{%
+  \begin{beamercolorbox}[wd=\textwidth,ht=5mm,dp=3mm,rightskip=1cm,leftskip=1cm]{footline}
+  \insertframenumber/\inserttotalframenumber
+  \ifstrempty{\@footlinepayoff}{}{%
+    \usebeamerfont{footline}\hfill\@footlinepayoff
+  }
+  \end{beamercolorbox}
+}
+
+% Set footline AND coordinate blocks with it
+\newcommand{\footlinecolor}[1]{% if #1 is empty, makes footline transparent
+  \ifstrempty{#1}{%
+    \footlinepayoff{}
+    \setbeamercolor{footline}{fg=darkgray, bg=}
+    \setbeamercolor{block title}{fg=white,bg=maincolor}
+    \setbeamercolor{block body}{fg=white,bg=maincolor}
+  }{
+    \footlinepayoff{\@footlineauthor\inserttitle}
+    \setbeamercolor{footline}{fg=white,bg=#1}
+    \setbeamercolor{block title}{fg=white,bg=#1}
+    \setbeamercolor{block body}{fg=white,bg=#1}
+  }%
+}
+\footlinecolor{} % Default: no footline
+
+\pgfdeclareimage[width=0.09\paperwidth]{logo}{Assets/ppt/logo}
+\pgfdeclareimage[width=0.09\paperwidth]{whitelogo}{Assets/ppt/logowhite}
+\newcommand{\@logo}{logo}
+
+% Set colours
+% NOTE! Beamer colors should be set in the preamble. It often works fine in the
+%       document itself, but NOT for normal text foreground.
+%       \themecolor should only be called from the preamble.
+\newcommand{\themecolor}[1]{
+	\ifstrequal{#1}{main}{%
+        \setbeamercolor{footline}{fg=white}
+		\setbeamercolor{normal text}{fg=white,bg=maincolor}
+		\setbeamercolor{structure}{fg=white}
+		\renewcommand{\@logo}{whitelogo}
+		\setbeamercolor{block title}{fg=maincolor,bg=sintefgrey}
+		\setbeamercolor{block body}{fg=darkgray,bg=sintefgrey}
+	}{%
+        \setbeamercolor{footline}{fg=darkgray}
+		\setbeamercolor{normal text}{fg=darkgray,bg=white}
+		\setbeamercolor{structure}{fg=maincolor}
+		\renewcommand{\@logo}{logo}
+		\setbeamercolor{block title}{fg=white,bg=maincolor}
+		\setbeamercolor{block body}{fg=darkgray,bg=sintefgrey}
+	}
+}
+\themecolor{white} % Default: white theme
+
+\setbeamercolor{title}{fg=maincolor,bg=white}
+\setbeamercolor{alerted text}{fg=sintefred}
+\setbeamercolor{author}{fg=black}
+\setbeamercolor{date}{fg=black}
+
+\setbeamerfont{author}{size=\mdseries}
+\setbeamerfont{institute}{size=\mdseries}
+\setbeamerfont{date}{size=\small}
+\setbeamerfont{title}{series=\bfseries}
+\setbeamerfont{subtitle}{series=\mdseries,size=\footnotesize}
+\setbeamerfont{frametitle}{series=\bfseries}
+\setbeamerfont{framesubtitle}{series=\mdseries}
+\setbeamerfont{footline}{size=\scriptsize}
+\setbeamerfont{block title}{series=\centering\bfseries}
+
+% Code to get prettier boxes
+\setbeamertemplate{blocks}[rounded]
+
+% Bullets in several levels
+\setbeamertemplate{itemize item}{\textbullet}
+\setbeamertemplate{itemize subitem}{\textemdash}
+\setbeamertemplate{itemize subsubitem}{\ensuremath{\circ}}
+
+\newenvironment{colorblock}[3][white]{%
+	\begingroup
+	\setbeamercolor{block title}{fg=#1,bg=#2}
+	\setbeamercolor{block body} {fg=#1,bg=#2}
+	\begin{block}{#3}
+	}{%
+	\end{block}
+	\endgroup
+}
+
+% Put the logo in each slide's top left area
+\setbeamertemplate{headline}{\hspace{0.06\textwidth}\pgfuseimage{\@logo}}
+
+% Define frame title and subtitle layout
+\setbeamertemplate{frametitle}{%
+  \vspace*{-3.5ex}
+  \begin{beamercolorbox}[leftskip=2cm]{frametitle}%
+    \usebeamerfont{frametitle}\insertframetitle\\
+    \usebeamerfont{framesubtitle}\insertframesubtitle
+  \end{beamercolorbox}
+}
+
+\def\@courseLabel{}
+\def\@IDnumber{}
+
+\newcommand{\course}[1]{\def\@courseLabel{#1}}
+\newcommand{\IDnumber}[1]{\def\@IDnumber{#1}}
+
+% Define the title page
+\setbeamertemplate{title page}{%
+  \vskip5pt plus 5filll%
+  % Reposition the box in an inelegant way - but it works!
+  \hspace{-12mm}
+  \vspace{20mm}
+  \begin{beamercolorbox}[ht=5.2cm,wd=0.69\textwidth,sep=20pt,leftskip=8mm]{title}
+    {\usebeamerfont{title}\inserttitle}
+    \vfill
+    \vspace{3ex}
+    {\usebeamerfont{author}\usebeamercolor[fg]{author}\textbf{\insertauthor} \ifdefempty{\@IDnumber}{}{(\@IDnumber)}}
+    \vfill
+    {\usebeamerfont{subtitle}\insertsubtitle}
+    \vspace{2ex}
+    {\usebeamerfont{subtitle}\@courseLabel}
+    \vfill
+    \vspace{2ex}
+    {\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate}
+  \end{beamercolorbox}
+}
+
+% Define slide splitting dimensions (e.g. title and chapter slides)
+\newcommand{\TikzSplitSlide}[1]{%
+  \rule{0.56\paperwidth}{0pt}%
+  \begin{tikzpicture}
+    \clip (-0.1\paperwidth,-0.5\paperheight) --
+          ( 0.5\paperwidth,-0.5\paperheight) --
+          ( 0.5\paperwidth, 0.5\paperheight) --
+          ( 0.1\paperwidth, 0.5\paperheight) -- cycle;
+    \node at (0.2\paperwidth,0) {%
+      \includegraphics[height=\paperheight]{#1}%
+    };
+  \end{tikzpicture}
+}
+
+\newbool{splittitle}
+\newcommand{\@TitleBackground}{}
+\newcommand{\titlebackground}{\@ifstar{\SplitBackground}{\FullBackground}}
+\newcommand{\FullBackground}[1]{\renewcommand{\@TitleBackground}{#1}}
+\newcommand{\SplitBackground}[1]{%
+	\booltrue{splittitle}%
+	\renewcommand{\@TitleBackground}{#1}%
+}
+
+% Overwrite the maketitle command for the title page
+\renewcommand{\maketitle}{
+\begingroup
+  \ifdefempty{\@TitleBackground}{}{% Skip if \@TitleBackground is empty
+    \setbeamertemplate{background}{%
+      \ifbool{splittitle}{%
+        \TikzSplitSlide{\@TitleBackground}
+      }{% Normal, full-screen background
+        \includegraphics[height=\paperheight]{\@TitleBackground}
+      }
+    }
+  }
+  \begin{frame}%
+  \titlepage%
+  \end{frame}%
+\endgroup
+}
+
+\makeatletter
+    \newenvironment{withoutheadline}{
+        \setbeamertemplate{headline}[default]
+        \def\beamer@entrycode{\vspace*{-\headheight}}
+    }{}
+\makeatother
+
+% Define chapter environment
+\newenvironment{chapter}[3][]{% Args: image (optional), color, frame title
+  \begingroup
+  \themecolor{main}
+  \setbeamertemplate{footline}{}
+  \ifstrempty{#2}{
+    \setbeamercolor{frametitle}{fg=white}
+    \setbeamercolor{normal text}{fg=white,bg=maincolor}
+  }{
+    \setbeamercolor{frametitle}{fg=white}
+    \setbeamercolor{normal text}{fg=white,bg=#2}
+  }
+  \ifstrempty{#1}{}{\setbeamertemplate{background}{\TikzSplitSlide{#1}}}
+  \setbeamertemplate{frametitle}{%
+    \vspace*{8ex}
+    \begin{beamercolorbox}[wd=0.5\textwidth]{frametitle}
+      \usebeamerfont{frametitle}\insertframetitle\\
+      % \usebeamerfont{framesubtitle}\insertframesubtitle
+    \end{beamercolorbox}
+  }
+  \setbeamertemplate{itemize items}[square] % Set itemize icons to squares
+  \setbeamerfont{itemize item}{size=\small}
+  \begin{frame}{#3}
+  \hspace*{0.05\textwidth}%
+  \minipage{0.5\textwidth}%
+  \usebeamercolor[fg]{normal text}%
+}{%
+  \endminipage
+  \end{frame}
+  \endgroup
+}
+
+% Define sidepic environment
+\newenvironment{sidepic}[2]{% Args: image, frame title
+  \begingroup
+  \setbeamertemplate{background}{%
+  \hspace*{0.55\paperwidth}%
+  \includegraphics[width=0.55\paperwidth]{#1}%
+  }
+  \setbeamertemplate{frametitle}{% Same as normal, but with right skip
+    \vspace*{-3.5ex}
+    \begin{beamercolorbox}[leftskip=2cm,rightskip=0.4\textwidth]{frametitle}%
+      \usebeamerfont{frametitle}\insertframetitle\\
+      \usebeamerfont{framesubtitle}\insertframesubtitle
+    \end{beamercolorbox}
+  }
+  \begin{frame}{#2}
+  \minipage{0.6\textwidth}%
+}{%
+  \endminipage
+  \end{frame}
+  \endgroup
+}
+
+% Define env with text and image side by side
+
+\newenvironment{textimg}[2]{% Args: frame title, text, image,
+  \begingroup
+  \begin{frame}{#1}
+  \begin{minipage}[t]{0.5\textwidth}% Left minipage for text
+    \end{minipage}%
+  % \begin{minipage}{0.5\textwidth}% Right minipage for image
+      \includegraphics[width=0.5\paperwidth]{#2}
+    % \end{minipage}%
+  \end{frame}
+  \endgroup
+}
+
+% Define backmatter
+\newcommand{\backmatter}[1][]{
+\begingroup
+  \themecolor{main}
+  \begin{frame}[c]
+    \centering
+    \begin{minipage}{\textwidth}
+      \usebeamercolor[fg]{normal text}
+      \centering
+      \ifstrequal{#1}{notitle}{}{
+        \Huge \inserttitle
+        \vspace{10mm}
+      }
+      \Large \textsl{\\ Thank you for listening!}
+    \end{minipage}
+  \end{frame}
+\endgroup
+}
+\usepackage{multicol}
+% \usepackage{etoc}
+
+% Define sectioning and table of contents
+% Check the number of sections and decide on the number of columns for TOC
+% \newcounter{totalsections}
+
+% \newcommand{\countsections}{
+% \setcounter{totalsections}{0}
+% % \etocsetnexttocdepth{section} % Include only sections in TOC counting
+% % \etocsetstyle{section}
+% {\stepcounter{totalsections}}
+% }
+% \countsections
+
+% \newcommand{\mytableofcontents}{%
+%   \ifnum\value{totalsections}>4
+%   % If there are more than 4 sections, use a two-column layout
+%     \begin{multicols}{2}[\raggedcolumns]
+%       \vspace*{-1cm}
+%       \tableofcontents[currentsection, hideallsubsections, sectionstyle=show/shaded, subsectionstyle=hide]
+%     \end{multicols}
+%   \else
+%   % If there are 4 or fewer sections, use a single column layout
+%     \tableofcontents[currentsection, hideallsubsections, sectionstyle=show/shaded, subsectionstyle=hide]
+%   \fi
+% }
+
+\AtBeginSection[]
+{
+    \begingroup
+    \themecolor{main}
+    \begin{frame}{Presentation Outline}
+        \begin{multicols}{2}[\raggedcolumns]
+            \vspace*{-1cm}
+            \tableofcontents[currentsection, hideallsubsections, sectionstyle=show/shaded, subsectionstyle=hide]
+        \end{multicols}
+        % \tableofcontents[currentsection, hideallsubsections, sectionstyle=show/shaded, subsectionstyle=hide]
+    \end{frame}
+    \endgroup
+}
+
+% customize the caption
+\setbeamertemplate{caption}[numbered]
+\setbeamerfont{caption}{size=\small}
+\setbeamercolor{caption name}{fg=blue}
+
+
+% style of section presented in the table of contents
+\setbeamertemplate{section in toc}{$\blacktriangleright$~\inserttocsection}
+\setbeamertemplate{subsection in toc}{
+\hspace{1.2em}{\small{$\blackdiamond$}}~\inserttocsubsection\par}
+
+% automate subtitle of each frame
+\makeatletter
+    \pretocmd\beamer@checkframetitle{\framesubtitle{\thesection \, \secname}}
+\makeatother
+
+% avoid numbering of frames that are breaked into multiply slides
+\setbeamertemplate{frametitle continuation}{}
+
+
+
+
+%--------------------------
+% Timeline as Grantt Chart
+%---------------------------
