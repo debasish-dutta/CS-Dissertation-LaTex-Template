@@ -5,24 +5,25 @@ Archive/
 .DS_Store
 
 // Core latex/pdflatex auxiliary files:
-
-*.aux 
-*.bit 
-*.blg 
-*.bbl 
-*.lof 
-*.log 
-*.lot 
-*.glo 
-*.glx 
-*.gxg 
-*.gxs 
-*.idx 
-*.ilg 
-*.ind 
-*.out 
-*.url 
-*.svn 
+*.nav
+*.snm
+*.aux
+*.bit
+*.blg
+*.bbl
+*.lof
+*.log
+*.lot
+*.glo
+*.glx
+*.gxg
+*.gxs
+*.idx
+*.ilg
+*.ind
+*.out
+*.url
+*.svn
 *.toc
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
@@ -43,4 +44,3 @@ Archive/
 
 # listings
 *.lol
-
