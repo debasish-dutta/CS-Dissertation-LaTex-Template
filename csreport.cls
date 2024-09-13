@@ -37,7 +37,7 @@
 \RequirePackage{longtable} % tables that can span several pages
 \RequirePackage{fancyhdr} % For the headers
 \RequirePackage{setspace} % For double spacing
-\RequirePackage{tabularx} 
+\RequirePackage{tabularx}
 
 \RequirePackage{listings} % For writing code
 
@@ -61,6 +61,10 @@
 \RequirePackage{amsthm,amsmath,amssymb,amsfonts,bbm}% Math symbols
 \RequirePackage{multirow}
 \RequirePackage{tabularx}
+\RequirePackage{algpseudocodex}
+\RequirePackage{algorithm}
+\RequirePackage{algorithmicx}
+
 %-------------------------------------------------------------------------------
 %	CUSTOM COMMANDS AND MACROS
 %-------------------------------------------------------------------------------
@@ -159,7 +163,7 @@
 \setcounter{tocdepth}{4}
 \newcommand{\declarationByGuide}{
 \vfill
-\noindent\rule{\textwidth}{1pt} 
+\noindent\rule{\textwidth}{1pt}
 \begin{center} \textbf{Declaration by Supervisor}\end{center}
 
 \noindent Progress of \textbf{\@author} in the project titled \textbf{\@title} is satisfactory/ unsatisfactory.
@@ -168,27 +172,27 @@
 \noindent\makebox[\textwidth][r]{(\@supervisor)}\\
 \makebox[\textwidth][r]{Supervisor}\\
 \makebox[\textwidth][r]{\@supervisordesignation}\\
-\rule{\textwidth}{1pt} 
+\rule{\textwidth}{1pt}
 }
 \newcommand{\declarationByStudent}{
-\noindent\rule{\textwidth}{1pt} 
+\noindent\rule{\textwidth}{1pt}
 \begin{center} \textbf{Declaration by Student}\end{center}
 
 \noindent I, \textbf{\@author} hereby declare that the project titled \textbf{\@title} is my own work and it has not been copied from anywhere.
 
 \vspace{10mm}
 \hfill(\@author)\\
-\rule{\textwidth}{1pt}  
+\rule{\textwidth}{1pt}
 }
 % \newcommand{\declarationByExternal}{
-% \noindent\rule{\textwidth}{1pt} 
+% \noindent\rule{\textwidth}{1pt}
 % \begin{center} \textbf{Declaration by External}\end{center}
 
 % \noindent The project report entitled \textbf{\@author} submitted by \textbf{\@title} has been examined.
 
 % \vspace{10mm}
 % \hfill(Examiner)\\
-% \rule{\textwidth}{1pt}  
+% \rule{\textwidth}{1pt}
 % }
 }{
 \newcommand{\startpreamble}{
@@ -226,62 +230,62 @@
     \begin{titlepage}
         \begin{center}
             % \NoBgThispage
-            
-     
+
+
             \vspace*{0.3cm}
-     
+
            { \huge \bfseries \@title \par \ }
          \vspace{1.5cm}
-     
+
             \textit{A project report submitted in partial fulfilment of the requirements for the degree of}
-                 
+
             \vspace{0.2cm}
-     
+
              {\large \textbf{MASTER OF SCIENCE}}
-     
+
             \vspace{0.2cm}
-     
+
              {\large \textbf{IN}}
-     
+
                \vspace{0.2cm}
-              
+
              %Choose your domain here
              {\large \textbf{\@degree}}
-    
+
             \vspace{2.5cm}
-          
+
            \includegraphics[width=0.25\textwidth]{Logo}
-            
+
             \vspace{1.5cm}
-     
+
             \textit{Submitted by}
-     
+
             \vspace{0.2cm}
             \textbf{\@author\ $($\@authordesignation$)$}
-    
+
           \vspace{2cm}
-     
+
             \textit{Supervised by}
-     
+
             \vspace{0.2cm}
             \textbf{\@supervisor}\\
             \textbf{\@supervisordesignation}
-    
+
             % \vspace{2cm}
             % \ifx\cosupervisor\undefined\else{\textit{Co-Supervised by} \\ \vspace{0.2cm} \textbf{\cosupervisor} \\ \textbf{\cosupervisordesignantion}} \\ \fi
-            
-            
-     
+
+
+
            \vspace{2cm}
            \textbf{\large DEPARTMENT OF COMPUTER SCIENCE}\\
             \textbf{\large GAUHATI UNIVERSITY, ASSAM}\\
            \textbf{\large \@date}
-    
+
         \end{center}
     \end{titlepage}
 }
 \newcommand{\declaration}{
-\unnumberedchapter{Certificate} 
+\unnumberedchapter{Certificate}
 \cleardoublepage
 \thispagestyle{empty}
 
@@ -318,7 +322,7 @@ Place: Gauhati University	& Head of the Department \\
 \end{tabular}
 }
 \newcommand{\declarationByGuide}{
-\unnumberedchapter{Certificate} 
+\unnumberedchapter{Certificate}
 \cleardoublepage
 \thispagestyle{empty}
 
@@ -358,7 +362,7 @@ Place: Gauhati University	& Supervisor \\
 
 }
 \newcommand{\declarationByExternal}{
-\unnumberedchapter{Certificate} 
+\unnumberedchapter{Certificate}
 \cleardoublepage
 \thispagestyle{empty}
 
@@ -398,7 +402,7 @@ The project report entitled \textbf{\@title} submitted by \textbf{\@author}, for
   Internal Examiner & External Examiner \\
   Date:	  & Date: \\
   Place: Gauhati University	& Place: Gauhati University \\
-  
+
   \end{tabular}
 }
 \newcommand{\declarationByStudent}{
@@ -417,9 +421,9 @@ The project report entitled \textbf{\@title} submitted by \textbf{\@author}, for
 
 \end{center}
 
-I hereby declare that the seminar report entitled \textbf{\@title} has been 
-completed by me and submitted in partial fulfilment for the requirement of award 
-of the degree of \textbf{Master of Science in \@degree}, Gauhati University. 
+I hereby declare that the seminar report entitled \textbf{\@title} has been
+completed by me and submitted in partial fulfilment for the requirement of award
+of the degree of \textbf{Master of Science in \@degree}, Gauhati University.
 I also declare that any or all contents incorporated in the report has not been submitted in any form for the award of any other degree of any other institute or university.
 
 \vspace{4cm}
@@ -456,7 +460,7 @@ I also extend my sincere thanks to \textbf{Prof. Anjana Kakoti Mahanta}, Departm
 of Computer Science, Gauhati University, for her support in this project. Her insights and inputs
 have been invaluable in enhancing the quality of my work. \\
 I would like to express my gratitude to all the faculty members of the Computer Science Department, Gauhati University, for their support and
-encouragement throughout this project. 
+encouragement throughout this project.
 
  \vspace{5cm}
 
@@ -469,7 +473,7 @@ encouragement throughout this project.
 \end{tabular}
 }
 \newcommand{\abstract}{
-\unnumberedchapter{Abstract} 
+\unnumberedchapter{Abstract}
 \cleardoublepage
 \thispagestyle{empty}
 \chapter*{Abstract}
@@ -478,7 +482,3 @@ encouragement throughout this project.
 \input{Preamble/abstract}
 }
 }
-
-
-
-

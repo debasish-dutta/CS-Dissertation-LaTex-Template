@@ -15,7 +15,7 @@ The main folder contains three folders detailed here:
     \item \textbf{Assets.} This folder should contain all the images that you will use in your thesis. It can contain subfolders, for example one for each chapter. To include an image from the main text, use something like \texttt{\textbackslash includegraphics\{subfolder/image.jpg\} } without worrying about the \texttt{Images} path.
 
     \item \textbf{MainText.} This folder contains a series of \LaTeX\ files that form the main text: introduction, chapters, conclusion, appendices and published articles. The introduction and conclusion as they are now are not numbered, which creates a few difficulties with the headers of the thesis. Those are solved by including the commands \texttt{\textbackslash unnumberedchapter\{\}} and \texttt{\textbackslash numberedchapter} before including the files in \texttt{xxx\_Thesis.tex}. If you want the introduction and conclusion to be numbered, re-write and treat them as regular chapters.
-    
+
     \item \textbf{Preamble.} This folder contains a series of \LaTeX\ files with the pages that will appear before the main text. These files are mainly for the final dissertation. Do not modify them for unless neccessary. The files are:
     \begin{itemize}
     \item \texttt{abstract.tex} --- Abstract. Follow directions in the file.
@@ -25,22 +25,22 @@ The main folder contains three folders detailed here:
     \item \texttt{Thesis\_bibliography.bib} --- BibTeX file containing your bibliography.
     \item \texttt{report\_bib.bib} --- BibTeX file containing your bibliography for reports.
     \end{itemize}
-    
+
     \end{itemize}
 
 \subsection{\texttt{Report.tex}}
 
     This is the main file, the only one that need to be compiled to build the document. Compile once with \LaTeX, once with BibTeX and finally twice with \LaTeX\ to get all the references right.
-    
+
     Let's go through each section and comment them briefly. \cite{App88} The last section will emphasize the differences between the two files.\cite{C_grammar}
-    
+
 
 \subsection{Differences between a report version and final version}
 
-    There are two main differences between \verb|\documentclass[report]{csreport}| and \verb|\documentclass[final]{csreport}|. 
-    
+    There are two main differences between \verb|\documentclass[report]{csreport}| and \verb|\documentclass[final]{csreport}|.
+
     The difference is in the document style: page size, header and line spacing are different This might create small issues, such as page breaking with large tables, images or captions, when compiling the same content.
-    
+
 
 \section{Document Structure}
 \subsection{Title, Author, and Date}
@@ -85,16 +85,16 @@ Create numbered lists using the \texttt{enumerate} environment:
 Insert figures using the \texttt{figure} environment:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.25\textwidth]{chap3/dragon.png} 
+  \includegraphics[width=0.25\textwidth]{chap3/dragon.png}
   \caption{A sample figure.}
   \label{fig:sample}
 \end{figure}
 
-Refer to figure like this: Figure~\ref{fig:sample} or this (Fig.~\ref{fig:sample}). 
+Refer to figure like this: Figure~\ref{fig:sample} or this (Fig.~\ref{fig:sample}).
 
 
 \subsection{Tables}
-\begin{table}[H] 
+\begin{table}[H]
     \center
     \caption{Short heading above the table.}
     \begin{tabular}{c|c}
@@ -108,7 +108,7 @@ Refer to figure like this: Figure~\ref{fig:sample} or this (Fig.~\ref{fig:sample
     \label{tab:values}
     \caption*{Full caption with all the details here.}
     \end{table}
-    
+
     \begin{table}[H] \center
     \begin{tabular}{c|c}
     Parameter & Value \\ \hline \hline
@@ -120,22 +120,22 @@ Refer to figure like this: Figure~\ref{fig:sample} or this (Fig.~\ref{fig:sample
     \end{tabular}
     \caption{This is how tables are created}
     \end{table}
-    
-    
+
+
     Refer to tables this this: Table~\ref{tab:values}.
 
     \subsection{Codes}
 
     \begin{lstlisting}[caption={My Captions},captionpos=b]
         x := -2 + y
-        
+
         \end{lstlisting}
-       
+
     \begin{lstlisting}[language=C,caption={[short caption]caption text}, captionpos=b]
                      int main() {
-                         //compound statement #1 
+                         //compound statement #1
                          int a = 1;
-                         {       
+                         {
                              //compound statement #2
                              a = 2;
                                  if (a) {
@@ -144,23 +144,61 @@ Refer to figure like this: Figure~\ref{fig:sample} or this (Fig.~\ref{fig:sample
                              }
                          }
                      }
-            
+
             \end{lstlisting}
-    
-    % \pagebrea
+
+    % \pagebreak
     For indented code insertation we can do it like this.
     \begin{verbatim}
         // Hello.java
         import javax.swing.JApplet;
         import java.awt.Graphics;
-    
+
         public class Hello extends JApplet {
             public void paintComponent(Graphics g) {
                 g.drawString("Hello, world!", 65, 95);
-            }    
+            }
         }
-    
+
         \end{verbatim}
+
+    \subsection{Algorithms}
+
+    To add algorithms
+    \begin{algorithmic}
+\State $i \gets 10$
+\If{$i\geq 5$}
+    \State $i \gets i-1$
+\Else
+    \If{$i\leq 3$}
+        \State $i \gets i+2$
+    \EndIf
+\EndIf
+\end{algorithmic}
+
+The above algorithm example is not captioned nor numbered. If you need a captioned algorithm, you will also need to load the algorithm package.
+
+\begin{algorithm}
+\caption{An algorithm with caption}\label{alg:cap}
+\begin{algorithmic}
+\Require $n \geq 0$
+\Ensure $y = x^n$
+\State $y \gets 1$
+\State $X \gets x$
+\State $N \gets n$
+\While{$N \neq 0$}
+\If{$N$ is even}
+    \State $X \gets X \times X$
+    \State $N \gets \frac{N}{2}$  \Comment{This is a comment}
+\ElsIf{$N$ is odd}
+    \State $y \gets y \times X$
+    \State $N \gets N - 1$
+\EndIf
+\EndWhile
+\end{algorithmic}
+\end{algorithm}
+
+You can use label{...} after the caption{...}, so that the algorithm number can be cross-referenced with as \ref{alg:cap}.
 
 
 \section{References}
@@ -171,4 +209,3 @@ According to \cite{author2022}, LaTeX is powerful.
 
 \section{Conclusion}
 This seminar report provides a brief introduction to LaTeX and some of its essential components. Experiment with LaTeX to create beautiful documents.
-
